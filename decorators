@@ -1,0 +1,21 @@
+"""
+divide large number by small number  using python decorators
+"""
+
+def smart_div(fun):
+    def inner_div(num1, num2):
+        if num1 < num2:
+            num1, num2 = num2, num1
+            return fun(num1, num2)
+        else:
+            return fun(num1, num2)
+    return inner_div
+
+
+@smart_div
+def division(a, b):
+    return a/b
+
+
+answer = division(90, 1000)
+print(answer)
